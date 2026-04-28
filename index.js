@@ -59,6 +59,15 @@ const config = {
 client.once('ready', async () => {
     console.log(`${client.user.tag} olarak giriş yapıldı!`);
 
+    // Botun durumunu (Activity) ayarlama
+    client.user.setPresence({
+        activities: [{ 
+            name: 'Yetki | 🛡️ Ace System', 
+            type: ActivityType.Playing // "Oynuyor" olarak görünür
+        }],
+        status: 'online', // Çevrimiçi durumu
+    });
+    
     const kanal = client.channels.cache.get(config.kanallar.basvuruKanal);
     if (!kanal) return console.log("Başvuru kanalı bulunamadı, ID'yi kontrol et.");
 
@@ -164,7 +173,7 @@ client.on('interactionCreate', async interaction => {
                     .addOptions(config.verilecekYetkiler)
             );
 
-            await interaction.reply({ content: '✅ Lütfen bu kullanıcıya verilecek yetkiyi aşağıdaki menüden seçin:', components: [menu], ephemeral: true });
+            await interaction.reply({ content: '✅ Lütfen bu kullanıcıya verilecek yetkiyi aşağıdaki menüden seçin. NOT: En Alt (Stajer) Yetkisinden Yukarı Doğru Yetki Verimi Yapınız', components: [menu], ephemeral: true });
         }
     }
 
