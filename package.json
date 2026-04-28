@@ -1,1 +1,12 @@
-
+{
+  "name": "yetkili-alim-botu",
+  "version": "1.0.0",
+  "description": "Discord Yetkili Alım Sistemi",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  }
+}
